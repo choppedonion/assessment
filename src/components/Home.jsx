@@ -5,7 +5,7 @@ import Products from "./Products";
 function Home({posts}) {
   return (
     <>
-        <Header />
+        <Header title = {"Posts"}/>
         <Products posts = {posts}/>  
     </>
   )

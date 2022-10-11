@@ -14,7 +14,7 @@ function Description(props) {
 
   return (
     <>
-        <Header /> 
+        <Header title = {post.author.name}/> 
         <Card style={{ width: '18rem' }}>
             <Card.Body>
             <ProductCard post = {post}/>
