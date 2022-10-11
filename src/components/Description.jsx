@@ -1,7 +1,9 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
-import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
+import '../styles/Description.css';
+
+import { useLocation, useNavigate } from 'react-router-dom';
+import {Card, Button, ListGroup} from 'react-bootstrap';
+
 import Header from "./Header";
 import ProductCard from "./ProductCard";
 
@@ -9,34 +11,39 @@ import ProductCard from "./ProductCard";
 function Description(props) {
     
     const location = useLocation();
+    const navigate = useNavigate();
 
     const post = location.state;
 
   return (
-    <>
+    <section className='Description_Body'>
         <Header title = {post.author.name}/> 
-        <Card style={{ width: '18rem' }}>
+        <Card className='Details'>
             <Card.Body>
+            <h6>Your choice :</h6>
             <ProductCard post = {post}/>
-              <Card.Title>ID : {post.id}</Card.Title>
             </Card.Body>
             <ListGroup className="list-group-flush">
-              <ListGroup.Item><h6>Title :</h6> {post.title}</ListGroup.Item>
-              <ListGroup.Item><h6>Categories :</h6>
+              <Card.Header><h6>Title </h6></Card.Header>
+              <ListGroup.Item>{post.title}</ListGroup.Item>
+              <Card.Header><h6>ID </h6></Card.Header>
+              <ListGroup.Item>{post.id}</ListGroup.Item>
+              <Card.Header><h6>Categories</h6></Card.Header>
+              <ListGroup.Item>
                     <ul>
                         {post.categories.map((e) => (
                         <li key={e.id}>{e.name}</li>
                         ))}
                     </ul> 
-                </ListGroup.Item>
-              <ListGroup.Item><h6>Summary :</h6> {post.summary}</ListGroup.Item>
+              </ListGroup.Item>
+              <Card.Header><h6>Summary </h6></Card.Header>
+              <ListGroup.Item>{post.summary}</ListGroup.Item>
             </ListGroup>
             <Card.Body>
-              <Card.Link href="#">Card Link</Card.Link>
-              <Card.Link href="#">Another Link</Card.Link>
+            <Button variant="outline-dark" onClick={() => navigate(-1)}>Previous Page</Button>
             </Card.Body>
         </Card>
-    </>  
+    </section>  
   )
 }
 

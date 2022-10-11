@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import '../styles/Filter.css';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 
@@ -26,7 +27,7 @@ function Filter({posts, setSelectedCategories}) {
   }
 
   return (
-    <div className='select'>
+    <section className='select'>
       <Select
         closeMenuOnSelect={false}
         components={animatedComponents}
@@ -37,7 +38,7 @@ function Filter({posts, setSelectedCategories}) {
         onChange={(et) => updateSelectedCategories(et.map((e) => e.value))}
 
       />
-    </div>
+    </section>
   )
 }
 

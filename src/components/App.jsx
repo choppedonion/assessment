@@ -4,6 +4,7 @@ import axios from 'axios';
 import {Routes, Route} from "react-router-dom";
 import Home from "./Home";
 import Description from './Description';
+import PageNotFound from './PageNotFound';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
     <Routes>
       <Route path="/" element = {<Home posts = {data}/>} />
       <Route path="/description/:id" element={<Description/>} />
+      <Route path="*" element={<PageNotFound/>} />
     </Routes>
     </>
     }

@@ -1,0 +1,6 @@
+.select {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    width: 70%;
+}

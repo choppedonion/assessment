@@ -1,0 +1,14 @@
+.Description_Body {
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+}
+
+.Details {
+    width: 60%;
+    margin-bottom: 50px;
+}

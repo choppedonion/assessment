@@ -8,9 +8,9 @@ function Products(props) {
     const posts = props.posts;
     const [selectedCategories, setSelectedCategories] = useState([]);
 
-    const [nbOfElement, setnbOfElement] = useState(4); 
+    const [nbOfElement, setnbOfElement] = useState(5); 
     const loadMore = () =>{
-        setnbOfElement(nbOfElement + 4);
+        setnbOfElement(nbOfElement + 5);
     }
     
     
@@ -34,7 +34,7 @@ function Products(props) {
             if(filteredPosts.length > nbOfElement)
             {
                 sethidenElement(true);
-                setLoad("Load More *" + (filteredPosts.length - nbOfElement).toString()+"*");
+                setLoad("Load More ==> " + (filteredPosts.length - nbOfElement).toString()+" elements");
             }
             else
             {
@@ -46,7 +46,7 @@ function Products(props) {
             if(posts.length > nbOfElement)
             {
                 sethidenElement(true);
-                setLoad("Load More *" + (posts.length - nbOfElement).toString()+"*")
+                setLoad("Load More ==> " + (posts.length - nbOfElement).toString()+ " elements")
             }
             else
             {
@@ -71,13 +71,13 @@ function Products(props) {
     <section>
         <Filter posts = {posts} setSelectedCategories={setSelectedCategories}/>
         <div className='post_list'>
-            {
-                selectedCategories.length === 0 ? show(posts.slice(0, nbOfElement)) : show(filteredPosts.slice(0, nbOfElement))
-            }
+        {
+            selectedCategories.length === 0 ? show(posts.slice(0, nbOfElement)) : show(filteredPosts.slice(0, nbOfElement))
+        }
         </div>
         <div className='Load_More'>
             {hidenElement === true ? (
-                <Button variant="outline-primary" onClick={() => loadMore()}>
+                <Button variant="outline-dark" onClick={() => loadMore()}>
                 {load}
                 </Button>
             ) : (
