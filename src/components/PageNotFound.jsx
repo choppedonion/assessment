@@ -3,6 +3,10 @@ import '../styles/PageNotFound.css';
 import {useNavigate} from 'react-router-dom';
 import {Button, Alert} from 'react-bootstrap';
   
+/**
+ * This is the components shown when user try to access to a wrong route 
+ */
+
 function PageNotFound(){
 
     const navigate = useNavigate();

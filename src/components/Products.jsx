@@ -4,17 +4,42 @@ import Button from 'react-bootstrap/Button';
 import Filter from "./Filter"
 import ProductCard from "./ProductCard"
 
-function Products(props) {
-    const posts = props.posts;
+/**
+ * Products Component show a our list of product or post
+ * The posts/Products can be shown without filtring the categories
+ * We can also select one or multiple Category to filter them by this criteria
+ * That's why we need to upload our Data fetched using react props
+ */
+
+function Products({posts}) {
+
+    // The array of Categories selected by the user
     const [selectedCategories, setSelectedCategories] = useState([]);
 
-    const [nbOfElement, setnbOfElement] = useState(5); 
-    const loadMore = () =>{
-        setnbOfElement(nbOfElement + 5);
-    }
-    
-    
+    // The array used to filter Posts by the categories selected
     const [filteredPosts, setFilteredPosts] = useState([]);
+
+    /**
+     * The element used to know the number of posts we will show
+     * It will be updated each time when we Click on load more Button
+     * We start by showing 5 elements
+     */
+    const [nbOfElement, setnbOfElement] = useState(5); 
+
+    // This element allow us to indicate in the Load More Button the number of posts not shown yet
+    const [load, setLoad] = useState("");
+
+    // This element allows to hide The load More button when all elements are displayed 
+    const [hidenElement, sethidenElement] = useState(false);
+  
+    
+
+
+
+    /**
+     * This Hook effect filter the data fetched from the Api
+     * And Keep just the data with the corresponding categories selected by the user
+    */
     useEffect( () =>{
         setFilteredPosts(   
             posts.filter(function (el)
@@ -26,8 +51,15 @@ function Products(props) {
         )
     },[posts,selectedCategories])
 
-    const [load, setLoad] = useState("");
-    const [hidenElement, sethidenElement] = useState(false);
+
+
+    /**
+     * This Hook effect check if all elements are displayed
+     * if not : we will count the number of elements remaining
+     * and show that number next to Load More button
+     * 
+     * If all elements are displayed we hide the Load More Button 
+    */
     useEffect( () =>{
         if(filteredPosts.length > 0)
         {
@@ -56,6 +88,17 @@ function Products(props) {
     }, [filteredPosts, nbOfElement, posts.length])
 
 
+    /**
+     * This Function allows to add 5 elements From our Data
+    */
+    const loadMore = () =>{
+        setnbOfElement(nbOfElement + 5);
+    }
+
+
+    /**
+     * This Function allows to display content of Data passed in the params
+    */
     function show(slice){
         return (
             slice.map((e, index) =>
@@ -66,6 +109,8 @@ function Products(props) {
             )
         )
     }
+
+
 
   return (
     <section>
@@ -81,7 +126,7 @@ function Products(props) {
                 {load}
                 </Button>
             ) : (
-                <footer class="blockquote-footer pt-4 mt-4 border-top">
+                <footer className="blockquote-footer pt-4 mt-4 border-top">
                     No More Element To Display
                 </footer>
             )

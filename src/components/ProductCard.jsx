@@ -3,9 +3,13 @@ import '../styles/ProductCard.css';
 import {Link} from "react-router-dom";
 import { Card } from 'react-bootstrap';
 
+
+/**
+ * ProductCard Components used to show items of each objects in our data In a descriptive card
+ */
+
 function ProductCard({post, index}) {
   return (
-
     <Link to={"/description/" + post.id} state={post} key ={index} style={{textDecoration: 'none'}} className="Card" >
         <Card border="info" style={{ width: '18rem' }}>
             <Card.Header>

@@ -4,8 +4,16 @@ import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 
 const animatedComponents = makeAnimated();
+
 function Filter({posts, setSelectedCategories}) {
+
+  // This array containes all categories selected without duplication
   const [categories, setCategories] = useState([]);
+
+  /**
+  * This Hook effect set the array from our data with categories selected
+  * and use reduce && include functions to avoid duplication
+  */
   useEffect(() => {
     setCategories(
       posts.reduce(
@@ -21,7 +29,9 @@ function Filter({posts, setSelectedCategories}) {
   }, [posts])
 
 
-
+  /**
+  * This Function update the value of the selected categories
+  */
   function updateSelectedCategories(e) {
     setSelectedCategories(e)
   }
@@ -36,7 +46,6 @@ function Filter({posts, setSelectedCategories}) {
         options={categories.map(item => ({ value: item, label: item }))}
 
         onChange={(et) => updateSelectedCategories(et.map((e) => e.value))}
-
       />
     </section>
   )

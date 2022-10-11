@@ -1,13 +1,20 @@
-import '../styles/index.css';
 import { useState, useEffect } from "react";
-import axios from 'axios';
 import {Routes, Route} from "react-router-dom";
+import axios from 'axios';
+
+import '../styles/index.css';
+
 import Home from "./Home";
 import Description from './Description';
 import PageNotFound from './PageNotFound';
 
 
 function App() {
+
+/**
+ * The App component
+ * Using React Hooks, I retrieved The data from The mock Api
+ */
 
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -24,6 +31,14 @@ function App() {
   }
 
 
+
+/**
+ * The Following code enables the navigation between pages
+ * And routing easily the data flow .
+ * In our Case, We Have the Home page where the Data will be Displayed
+ * And a description page to show details of each data element
+ * And a Error page when Users try to access to invalid URL
+ */
   return <div className='App'>{
     <>
     <Routes>

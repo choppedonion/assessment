@@ -7,10 +7,15 @@ import {Card, Button, ListGroup} from 'react-bootstrap';
 import Header from "./Header";
 import ProductCard from "./ProductCard";
 
+/**
+ * The Description component return details of passing props data
+ */
+
 
 function Description(props) {
     
     const location = useLocation();
+    
     const navigate = useNavigate();
 
     const post = location.state;
