@@ -11,7 +11,7 @@ I've done the following requirements :
 1. Retrieve the data from the mock API.
 1. Output the data in a list, including properties from the data that are appropriate for a list view.
 1. Implement a category filter - this can be single or multi-select.
-1. Implement pagination - this can be traditional numbered pages or "load more".
+1. Implement pagination - "load more".
 1. Use semantic markup where possible.
 1. Create a responsive layout with HTML and CSS.
 1. Use client-side routing to create a "detail" page.
